@@ -18,9 +18,11 @@ p recurse.call(product, 1, 3, 0)
 
 # Here is what we are doing here:
 # (3 * 3) * (4 * 4) #=> 144
-# so we are defining the product function (x * x)
+# so we are defining the square function (x * x)
 # and the combine function for each int between a and b
 # (a * b) where b is in fact a + 1 until a == b
+# map_reduce will go over each int(n) apply square
+# and multiply it with by square of n+1
 map_reduce = lambda do |f, combine, zero, a, b|
   return zero if a > b
   combine.call(f.call(a), map_reduce.call(f, combine, zero, a + 1, b))
